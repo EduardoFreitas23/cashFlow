@@ -135,4 +135,29 @@
   <data name="EXPENSE_NOT_FOUND" xml:space="preserve">
     <value>Despesa não encontrada.</value>
   </data>
+  <data name="NAME_EMPTY" xml:space="preserve">
+    <value>Nome vazio</value>
+  </data>
+  <data name="EMAIL_EMPTY" xml:space="preserve">
+    <value>E-mail vazio</value>
+  </data>
+  <data name="EMAIL_INVALID" xml:space="preserve">
+    <value>E-mail inválido</value>
+  </data>
+  <data name="INVALID_PASSWORD" xml:space="preserve">
+    <value>Palavra-passe inválida. A palavra-passe deve ter pelo menos 8 caracteres, incluindo letras maiúsculas, minúsculas, números e caracteres especiais. Exemplos de caracteres especiais: ! @ # $ % &amp; *. Tente novamente.</value>
+  </data>
+  <data name="EMAIL_ALREADY_REGISTERED" xml:space="preserve">
+    <value>Este e-mail já está a ser utilizado. Por favor, utilize um e-mail diferente ou tente recuperar a sua conta.</value>
+  </data>
+  <data name="EMAIL_OR_PASSWORD_INVALID" xml:space="preserve">
+    <value>Email ou senha inválida</value>
+  </data>
+  <data name="PASSWORD_DIFFERENT_CURRENT_PASSWORD" xml:space="preserve">
+    <value>Palavra-passe diferente da palavra-passe atual
+</value>
+  </data>
+  <data name="TAG_TYPE_NOT_SUPPORTED" xml:space="preserve">
+    <value>Tipo de etiqueta não suportado</value>
+  </data>
 </root>

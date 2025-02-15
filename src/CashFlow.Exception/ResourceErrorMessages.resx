@@ -135,4 +135,28 @@
   <data name="EXPENSE_NOT_FOUND" xml:space="preserve">
     <value>Expense not found.</value>
   </data>
+  <data name="NAME_EMPTY" xml:space="preserve">
+    <value>Name empty</value>
+  </data>
+  <data name="EMAIL_EMPTY" xml:space="preserve">
+    <value>E-mail empty</value>
+  </data>
+  <data name="EMAIL_INVALID" xml:space="preserve">
+    <value>E-mail invalid</value>
+  </data>
+  <data name="INVALID_PASSWORD" xml:space="preserve">
+    <value>Invalid password. The password must contain at least 8 characters, including uppercase and lowercase letters, numbers, and special characters. Examples of special characters: ! @ # $ % &amp; *. Please try again.</value>
+  </data>
+  <data name="EMAIL_ALREADY_REGISTERED" xml:space="preserve">
+    <value>This email is already in use. Please use a different email or try to recover your account.</value>
+  </data>
+  <data name="EMAIL_OR_PASSWORD_INVALID" xml:space="preserve">
+    <value>Email or password invalid</value>
+  </data>
+  <data name="PASSWORD_DIFFERENT_CURRENT_PASSWORD" xml:space="preserve">
+    <value>Password different current password</value>
+  </data>
+  <data name="TAG_TYPE_NOT_SUPPORTED" xml:space="preserve">
+    <value>Tag type not supported</value>
+  </data>
 </root>

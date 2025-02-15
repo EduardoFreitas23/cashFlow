@@ -4,13 +4,13 @@ using CashFlow.Exception;
 using CommonTestUtilities.Requests;
 using FluentAssertions;
 
-namespace Validators.Tests.Expenses.Register;
-public class RegisterExpenseValidatorTests {
+namespace Validators.Tests.Expenses;
+public class ExpenseValidatorTests {
     [Fact]
     public void Success() {
         //Arrange
         var validator = new ExpenseValidator();
-        var request = RequestRegisterExpenseJsonBuilder.Build();
+        var request = RequestExpenseJsonBuilder.Build();
 
         //Act
         var result = validator.Validate(request);
@@ -26,7 +26,7 @@ public class RegisterExpenseValidatorTests {
     public void Error_Title_Empty(string title) {
         //Arrange
         var validator = new ExpenseValidator();
-        var request = RequestRegisterExpenseJsonBuilder.Build();
+        var request = RequestExpenseJsonBuilder.Build();
         request.Title = title;
 
         //Act
@@ -41,7 +41,7 @@ public class RegisterExpenseValidatorTests {
     public void Error_Date_Future() {
         //Arrange
         var validator = new ExpenseValidator();
-        var request = RequestRegisterExpenseJsonBuilder.Build();
+        var request = RequestExpenseJsonBuilder.Build();
         request.Date = DateTime.UtcNow.AddDays(1);
 
         //Act
@@ -56,7 +56,7 @@ public class RegisterExpenseValidatorTests {
     public void Error_Payment_Type_Invalid() {
         //Arrange
         var validator = new ExpenseValidator();
-        var request = RequestRegisterExpenseJsonBuilder.Build();
+        var request = RequestExpenseJsonBuilder.Build();
         request.PaymentType = (PaymentType)700;
 
         //Act
@@ -75,7 +75,7 @@ public class RegisterExpenseValidatorTests {
     public void Error_Amount_Invalid(decimal amount) {
         //Arrange
         var validator = new ExpenseValidator();
-        var request = RequestRegisterExpenseJsonBuilder.Build();
+        var request = RequestExpenseJsonBuilder.Build();
         request.Amount = amount;
 
         //Act
@@ -84,5 +84,20 @@ public class RegisterExpenseValidatorTests {
         //Assert
         result.IsValid.Should().BeFalse();
         result.Errors.Should().ContainSingle().And.Contain(e => e.ErrorMessage.Equals(ResourceErrorMessages.AMOUNT_MUST_BE_GREATER_THAN_ZERO));
+    }
+
+    [Fact]
+    public void Error_Tag_Invalid() {
+        //Arrange
+        var validator = new ExpenseValidator();
+        var request = RequestExpenseJsonBuilder.Build();
+        request.Tags.Add((Tags)1000);
+
+        //Act
+        var result = validator.Validate(request);
+
+        //Assert
+        result.IsValid.Should().BeFalse();
+        result.Errors.Should().ContainSingle().And.Contain(e => e.ErrorMessage.Equals(ResourceErrorMessages.TAG_TYPE_NOT_SUPPORTED));
     }
 }

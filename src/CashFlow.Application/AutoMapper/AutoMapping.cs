@@ -11,12 +11,22 @@ public class AutoMapping : Profile {
     }
 
     private void RequestToEntity() {
-        CreateMap<RequestExpenseJson, Expense>();
+        CreateMap<RequestRegisterUserJson, User>()
+            .ForMember(entityUser => entityUser.Password, config => config.Ignore());
+
+        CreateMap<RequestExpenseJson, Expense>()
+            .ForMember(dest => dest.Tags, config => config.MapFrom(source => source.Tags.Distinct()));
+
+        CreateMap<Communication.Enums.Tags, Domain.Entities.Tags>()
+            .ForMember(dest => dest.Value, config => config.MapFrom(source => source));
     }
 
     private void EntityToResponse() {
+        CreateMap<Expense, ResponseExpenseJson>()
+            .ForMember(dest => dest.Tags, config => config.MapFrom(source => source.Tags.Select(tags => tags.Value)));
+
         CreateMap<Expense, ResponseRegisterExpenseJson>();
         CreateMap<Expense, ResponseShortExpenseJson>();
-        CreateMap<Expense, ResponseExpenseJson>();
+        CreateMap<User, ResponseUserProfileJson>();
     }
 }
